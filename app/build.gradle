@@ -1,0 +1,36 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.3"
+    defaultConfig {
+        applicationId "com.subbu.joketeller"
+        minSdkVersion 16
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile project(':joke')
+    compile project(':jokeandlib')
+    compile project(path: ':gce', configuration: 'android-endpoints')
+    compile 'com.google.android.gms:play-services:9.0.1'
+    compile 'com.jakewharton:butterknife:8.0.1'
+    compile 'com.google.android.gms:play-services-ads:9.0.1'
+    compile 'com.google.android.gms:play-services-auth:9.0.1'
+    compile 'com.google.android.gms:play-services-gcm:9.0.1'
+}
